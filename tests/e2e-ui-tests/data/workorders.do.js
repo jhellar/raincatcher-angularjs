@@ -126,13 +126,14 @@ var mobileWorkorders = {
     finishDate: 'Thu Aug 03 2017',
     finishTime: 'Thu Aug 03 2017',
     workSummary: 'Please remove damaged element and return to base',
-    index: 7
+    index: 7,
     workorderData: {
       heading: "Vehicle Inspection",
       fuel: 50,
       lights: "true",
       tires: "false"
     }
+  }
 };
 var workers = {
   WORKER1: {

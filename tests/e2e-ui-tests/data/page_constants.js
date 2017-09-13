@@ -4,7 +4,7 @@ module.exports = {
     URL: {
       MOBILE: 'http://localhost:9002/?url=http://localhost:8001#!/workflow',
       PORTAL: 'http://localhost:9003/?url=http://localhost:8001#!/workflow'
-    }
+    },
     DEFAULT_HEADING: 'FeedHenry Workforce Management',
     USERNAME_LABEL_MSG: 'Username or email',
     PASSWORD_LABEL_MSG: "Password",
@@ -13,7 +13,7 @@ module.exports = {
   logout: {
     URL: '/login',
     DEFAULT_BODY: 'Trouble logging in? Contact the switchboard.'
-  }
+  },
   workflows: {
     URL: '/workflows/list',
     URL_NEW: '/workflows/list/workflows/',
@@ -29,7 +29,7 @@ module.exports = {
     },
     portal: {
       URL_NEW: '/workorders/list/new',
-      DEFAULT_HEADING: "No workorder selected.",
+      DEFAULT_HEADING: "Workorders",
       DEFAULT_BODY: "Select a workorder from the menu, or create a new workorder:",
       WORKFLOW_MISSING_MSG: 'A workflow is required.',
       TITLE_MISSING_MSG: 'A title is required.',

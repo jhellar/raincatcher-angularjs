@@ -13,11 +13,12 @@ exports.config = {
     require: require('mocha-steps')
   },
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  suites: {
-    mobile: 'tests/mobile/*.js',
-    portal: 'tests/portal/*.js',
-    mobile_portal: 'tests/mobile-portal/*.js'
-  },
+  // suites: {
+  //   mobile: 'tests/mobile/*.js',
+  //   portal: 'tests/portal/*.js',
+  //   mobile_portal: 'tests/mobile-portal/*.js'
+  // },
+  specs: ['tests/portal/workflow.spec.js'],
   capabilities: {
     browserName: 'chrome',
     'chromeOptions': {
@@ -40,24 +41,24 @@ exports.config = {
       ]
     },
     defaultPageLoadTimeout: 10000,
-    defaultImplicitWait: 2000,
-    onPrepare: function setup() {
-      return browser.driver.executeScript(function () {
-        window.sessionStorage.clear();
-        window.localStorage.clear();
-        return {
-          width: window.screen.availWidth,
-          height: window.screen.availHeight,
-        };
-      }).then(function (result) {
-        console.log('Browser Max Window Size', result);
-        browser.driver.manage().window().setSize(result.width, result.height);
-      }).then(function () { // setup expect as global
-        var chai = require('chai');
-        var chaiAsPromised = require('chai-as-promised');
-        chai.use(chaiAsPromised);
-        global.expect = chai.expect;
-      });
-    }
+    defaultImplicitWait: 2000
+  },
+  onPrepare: function setup() {
+    return browser.driver.executeScript(function() {
+      window.sessionStorage.clear();
+      window.localStorage.clear();
+      return {
+        width: window.screen.availWidth,
+        height: window.screen.availHeight,
+      };
+    // }).then(function(result) {
+    //   console.log('Browser Max Window Size', result);
+    //   browser.driver.manage().window().setSize(result.width, result.height);
+    }).then(function() { // setup expect as global
+      var chai = require('chai');
+      var chaiAsPromised = require('chai-as-promised');
+      chai.use(chaiAsPromised);
+      global.expect = chai.expect;
+    });
   }
 };

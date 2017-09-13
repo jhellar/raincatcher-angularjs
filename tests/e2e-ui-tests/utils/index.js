@@ -2,7 +2,7 @@ var dragAndDropUtil = require('html-dnd').code;
 
 module.exports = {
   check: require('./check'),
-  date: require('./date'),
+  // date: require('./date'),
   expect: require('./expect'),
   promise: require('./promise'),
   object: require('./object'),

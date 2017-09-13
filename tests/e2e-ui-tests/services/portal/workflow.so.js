@@ -1,10 +1,10 @@
-var pageObject = require('../pages/workflow');
+var pageObject = require('../../page-objects/portal/workflow');
 
 var nwp = pageObject.new;
 var mwp = pageObject.main;
 var swp = pageObject.selected;
 
-var utils = require('../utils');
+var utils = require('../../utils');
 var BaseService = require('./base.so');
 
 var _ = require('lodash');
@@ -99,7 +99,7 @@ WorkflowService.prototype.expectElementDetails = function(promise, expected, exp
 };
 
 WorkflowService.prototype.addStep = function(workflow, step, dummyParams) {
-  var dummyParams = dummyParams || false;
+  dummyParams = dummyParams || false;
   return this.open(workflow)
   .then(() => swp.locators.stepForm.self.isPresent())
   .then((result) => utils.expect.resultIsTrue(result))

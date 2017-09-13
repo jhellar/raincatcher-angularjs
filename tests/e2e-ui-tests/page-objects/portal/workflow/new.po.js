@@ -1,5 +1,5 @@
-var consts = require('../../utils/constants');
-var utils = require('../../utils');
+var consts = require('../../../data/page_constants');
+var utils = require('../../../utils');
 
 var NewWorkflowPage = function() {
   var workflowFormSelector = 'form[name="workflowForm"]';

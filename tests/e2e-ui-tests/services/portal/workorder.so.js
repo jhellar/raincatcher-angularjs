@@ -1,10 +1,10 @@
-var pageObject = require('../pages/workorder');
+var pageObject = require('../../page-objects/portal/workorder');
 
 var nwp = pageObject.new;
 var mwp = pageObject.main;
 var swp = pageObject.selected;
 
-var utils = require('../utils');
+var utils = require('../../utils');
 var BaseService = require('./base.so');
 
 var _ = require('lodash');
