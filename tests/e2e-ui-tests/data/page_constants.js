@@ -18,8 +18,8 @@ module.exports = {
     URL: '/workflows/list',
     URL_NEW: '/workflows/list/workflows/',
     DEFAULT_HEADING: "No workflow selected.",
-    // DEFAULT_BODY: "Select a workflow from the menu, or create a new workflow:"
-    DEFAULT_BODY: "Select a workflow from the menu.",
+    DEFAULT_BODY: "Select a workflow from the menu, or create a new workflow:",
+    // DEFAULT_BODY: "Select a workflow from the menu.",
     TITLE_MISSING_MSG: 'A title is required.'
   },
   workorders: {

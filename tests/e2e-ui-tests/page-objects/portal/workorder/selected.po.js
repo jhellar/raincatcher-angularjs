@@ -14,7 +14,7 @@ var SelectedWorkorderPage = function() {
         utils.expect.resultIsTrue(result);
         return locators.workorderHeader.getText();
       }).then(function(result) {
-        utils.expect.resultIsEquelTo(result, header);
+        utils.expect.resultIsEqualTo(result, header);
       });
     },
     getDetails: function() {

@@ -33,17 +33,17 @@ var MainWorkorderPage = function() {
       return locators.sideMenuButton.click();
     },
     selfCheck: function() {
-      return browser.getLocationAbsUrl().then(function(result) {
-        utils.expect.resultIsEquelTo(result, consts.workorders.URL);
+      return browser.getCurrentUrl().then(function(result) {
+        expect(result).to.include(consts.workorders.URL);
         return locators.header.isPresent();
       }).then(function(result) {
         utils.expect.resultIsTrue(result);
         return locators.emptyTitle.getText();
       }).then(function(result) {
-        utils.expect.resultIsEquelTo(result, consts.workorders.DEFAULT_HEADING);
+        utils.expect.resultIsEqualTo(result, consts.workorders.DEFAULT_HEADING);
         return locators.emptyBody.getText();
       }).then(function(result) {
-        utils.expect.resultIsEquelTo(result, consts.workorders.DEFAULT_BODY);
+        utils.expect.resultIsEqualTo(result, consts.workorders.DEFAULT_BODY);
         return locators.newButton.isPresent();
       }).then(function(result) {
         utils.expect.resultIsTrue(result);

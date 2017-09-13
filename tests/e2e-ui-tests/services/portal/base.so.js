@@ -138,7 +138,7 @@ BaseService.prototype.clearAllFields = function() {
     utils.expect.resultIsTrue(result);
     return utils.promise.all(pageObject.new.locators.itemForm.fields, x => x.clear());
   })
-  .then((results) => utils.expect.eachResultsIsNull(results)) // clear fields
+  .then((results) => utils.expect.eachResultToBeNull(results)) // clear fields
   .then(() => self.clearOtherFields()); // clear date and time
 };
 
@@ -155,7 +155,7 @@ BaseService.prototype.expectWarningsPresent = function() {
     utils.expect.resultIsTrue(result);
     return utils.promise.all(pageObject.new.locators.itemForm.warnings, x => x.isPresent());
   })
-  .then((results) => utils.expect.eachResultsIsTrue(results));
+  .then((results) => utils.expect.eachResultToBeTrue(results));
 };
 
 /**
@@ -164,7 +164,7 @@ BaseService.prototype.expectWarningsPresent = function() {
  * @param {*} expected item details to match
  */
 BaseService.prototype.expectElementDetailsEqualTo = function(promise, expected) {
-  return this.expectElementDetails(promise, expected, utils.expect.resultIsEquelTo);
+  return this.expectElementDetails(promise, expected, utils.expect.resultIsEqualTo);
 };
 
 /**
@@ -173,7 +173,7 @@ BaseService.prototype.expectElementDetailsEqualTo = function(promise, expected) 
  * @param {*} expected item details to match
  */
 BaseService.prototype.expectElementDetailsNotEqualTo = function(promise, expected) {
-  return this.expectElementDetails(promise, expected, utils.expect.resultIsNotEquelTo);
+  return this.expectElementDetails(promise, expected, utils.expect.resultIsNotEqualTo);
 };
 
 /**
@@ -182,7 +182,7 @@ BaseService.prototype.expectElementDetailsNotEqualTo = function(promise, expecte
  */
 BaseService.prototype.expectToBeInList = function(expected) {
   var promise = this.search(expected, 1);
-  return this.expectElementDetails(promise, expected, utils.expect.resultIsEquelTo);
+  return this.expectElementDetails(promise, expected, utils.expect.resultIsEqualTo);
 };
 
 /**

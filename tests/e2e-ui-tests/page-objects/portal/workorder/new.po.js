@@ -49,8 +49,8 @@ var NewWorkorderPage = function() {
       return browser.get(consts.HASH + consts.workorders.URL_NEW);
     },
     selfCheck: function() {
-      browser.getLocationAbsUrl().then(function(result) {
-        utils.expect.resultIsEquelTo(result, consts.workorders.URL_NEW);
+      browser.getCurrentUrl().then(function(result) {
+        expect(result).to.include(consts.workorders.URL_NEW);
         return locators.workorderForm.self.isPresent();
       }).then(function(result) {
         utils.expect.resultIsTrue(result);
@@ -101,7 +101,7 @@ var NewWorkorderPage = function() {
       return locators.workorderForm.warnings.workflow.isPresent().then(function(result) {
         utils.expect.resultIsTrue(result);
         return locators.workorderForm.warnings.workflow.getText().then(function(result) {
-          utils.expect.resultIsEquelTo(result, consts.workorders.WORKFLOW_MISSING_MSG);
+          utils.expect.resultIsEqualTo(result, consts.workorders.WORKFLOW_MISSING_MSG);
         });
       });
     },
@@ -109,7 +109,7 @@ var NewWorkorderPage = function() {
       return locators.workorderForm.warnings.title.isPresent().then(function(result) {
         utils.expect.resultIsTrue(result);
         return locators.workorderForm.warnings.title.getText().then(function(result) {
-          utils.expect.resultIsEquelTo(result, consts.workorders.TITLE_MISSING_MSG);
+          utils.expect.resultIsEqualTo(result, consts.workorders.TITLE_MISSING_MSG);
         });
       });
     },
@@ -117,7 +117,7 @@ var NewWorkorderPage = function() {
       return locators.workorderForm.warnings.address.isPresent().then(function(result) {
         utils.expect.resultIsTrue(result);
         return locators.workorderForm.warnings.address.getText().then(function(result) {
-          utils.expect.resultIsEquelTo(result, consts.workorders.ADDRESS_MISSING_MSG);
+          utils.expect.resultIsEqualTo(result, consts.workorders.ADDRESS_MISSING_MSG);
         });
       });
     },
@@ -125,7 +125,7 @@ var NewWorkorderPage = function() {
       return locators.workorderForm.warnings.latitude.isPresent().then(function(result) {
         utils.expect.resultIsTrue(result);
         return locators.workorderForm.warnings.latitude.getText().then(function(result) {
-          utils.expect.resultIsEquelTo(result, consts.workorders.LATITUDE_MISSING_MSG);
+          utils.expect.resultIsEqualTo(result, consts.workorders.LATITUDE_MISSING_MSG);
         });
       });
     },
@@ -133,7 +133,7 @@ var NewWorkorderPage = function() {
       return locators.workorderForm.warnings.longitude.isPresent().then(function(result) {
         utils.expect.resultIsTrue(result);
         return locators.workorderForm.warnings.longitude.getText().then(function(result) {
-          utils.expect.resultIsEquelTo(result, consts.workorders.LONGITUDE_MISSING_MSG);
+          utils.expect.resultIsEqualTo(result, consts.workorders.LONGITUDE_MISSING_MSG);
         });
       });
     },
@@ -141,7 +141,7 @@ var NewWorkorderPage = function() {
       return locators.workorderForm.warnings.finishDate.isPresent().then(function(result) {
         utils.expect.resultIsTrue(result);
         return locators.workorderForm.warnings.finishDate.getText().then(function(result) {
-          utils.expect.resultIsEquelTo(result, consts.workorders.FINISH_DATE_MISSING_MSG);
+          utils.expect.resultIsEqualTo(result, consts.workorders.FINISH_DATE_MISSING_MSG);
         });
       });
     },
@@ -149,7 +149,7 @@ var NewWorkorderPage = function() {
       return locators.workorderForm.warnings.finishTime.isPresent().then(function(result) {
         utils.expect.resultIsTrue(result);
         return locators.workorderForm.warnings.finishTime.getText().then(function(result) {
-          utils.expect.resultIsEquelTo(result, consts.workorders.FINISH_TIME_MISSING_MSG);
+          utils.expect.resultIsEqualTo(result, consts.workorders.FINISH_TIME_MISSING_MSG);
         });
       });
     },
@@ -157,7 +157,7 @@ var NewWorkorderPage = function() {
       return locators.workorderForm.warnings.summary.isPresent().then(function(result) {
         utils.expect.resultIsTrue(result);
         return locators.workorderForm.warnings.summary.getText().then(function(result) {
-          utils.expect.resultIsEquelTo(result, consts.workorders.SUMMARY_MISSING_MSG);
+          utils.expect.resultIsEqualTo(result, consts.workorders.SUMMARY_MISSING_MSG);
         });
       });
     }

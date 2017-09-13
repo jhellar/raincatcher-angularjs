@@ -12,10 +12,9 @@ describe('Workflow E2E', function() {
   before('login', function() {
     browser.ignoreSynchronization = true;
     authService.openPortalApp();
-    browser.sleep(5000);
-    authService.loginToPortalApp(constants.auth.usernames.DAISY,
+    authService.loginToPortalApp(constants.auth.usernames.DAISY_DIALER,
       constants.auth.DEFAULT_PASSWORD);
-    // authService.verifySuccessfulLogin();
+    authService.verifySuccessfulLogin();
   });
 
   after('LOGOUT', function() {
@@ -24,6 +23,7 @@ describe('Workflow E2E', function() {
 
   context('CREATE', function() {
     step('create an empty{} workflow', function() {
+      browser.ignoreSynchronization = false;
       workflowService.create({}, true);
     });
     step('required field warinigs shown', function() {
@@ -33,6 +33,7 @@ describe('Workflow E2E', function() {
       workflowService.create(data.workflows.CREATE);
     });
     step('open ' + data.params.WORKFLOW_TCREATE + ' workflow', function() {
+      browser.refresh(); // workaround for https://issues.jboss.org/browse/RAINCATCH-1225
       workflowService.open(data.workflows.CREATE);
     });
     step('check ' + data.params.WORKFLOW_TCREATE + ' workflow details', function() {
@@ -54,12 +55,14 @@ describe('Workflow E2E', function() {
       workflowService.create(data.workflows.UPDATE1);
     });
     step('update ' + data.params.WORKFLOW_TUPDATE1 + ' workflow details', function() {
+      browser.refresh(); // workaround for https://issues.jboss.org/browse/RAINCATCH-1225
       workflowService.update(data.workflows.UPDATE1, data.workflows.UPDATE2);
     });
     step('check ' + data.params.WORKFLOW_TUPDATE2 + ' workflow details', function() {
       workflowService.expectDetailsToBe(data.workflows.UPDATE2);
     });
-    step('check ' + data.params.WORKFLOW_TUPDATE + ' workflow in list', function() {
+    step('check ' + data.params.WORKFLOW_TUPDATE2 + ' workflow in list', function() {
+      browser.refresh(); // workaround for https://issues.jboss.org/browse/RAINCATCH-1225
       workflowService.expectToBeInList(data.workflows.UPDATE2);
     });
     step('check ' + data.params.WORKFLOW_TUPDATE1 + ' workflow not in list', function() {
@@ -75,6 +78,7 @@ describe('Workflow E2E', function() {
       workflowService.create(data.workflows.CANCEL);
     });
     step('open ' + data.params.WORKFLOW_TCANCEL + ' workflow details', function() {
+      browser.refresh(); // workaround for https://issues.jboss.org/browse/RAINCATCH-1225
       workflowService.open(data.workflows.CANCEL);
     });
     step('press [delete] button', function() {
@@ -98,8 +102,8 @@ describe('Workflow E2E', function() {
     step('open ' + data.params.WORKFLOW_TCANCEL + ' workflow details', function() {
       workflowService.open(data.workflows.CANCEL);
     });
-    step('press [edstep] button', function() {
-      workflowService.pressEdstepButton();
+    step('press [edit] button', function() {
+      workflowService.pressEditButton();
     });
     step('press [cancel] button', function() {
       workflowService.pressNewCancelButton();
@@ -118,6 +122,7 @@ describe('Workflow E2E', function() {
       workflowService.create(data.workflows.SEARCH);
     });
     step('search field is visible and ' + data.params.WORKFLOW_TSEARCH + 'is searched', function() {
+      browser.refresh(); // workaround for https://issues.jboss.org/browse/RAINCATCH-1225
       searched = workflowService.search(data.workflows.SEARCH, 1);
     });
     step('check ' + data.params.WORKFLOW_TSEARCH + ' workflow in list', function() {
@@ -137,9 +142,11 @@ describe('Workflow E2E', function() {
   context('DELETE', function() {
     before('create ' + data.params.WORKFLOW_TDELETE + ' workflow', function() {
       workflowService.create(data.workflows.DELETE);
+      browser.refresh(); // workaround for https://issues.jboss.org/browse/RAINCATCH-1225
     });
     step('remove ' + data.params.WORKFLOW_TDELETE + ' workflow', function() {
       workflowService.remove(data.workflows.DELETE);
+      browser.refresh(); // workaround for https://issues.jboss.org/browse/RAINCATCH-1225
     });
     step('RAINCATCH-839: check ' + data.params.WORKFLOW_TDELETE + ' workflow not in list', function() {
       workflowService.expectNotInTheList(data.workflows.DELETE);

@@ -35,7 +35,7 @@ WorkorderService.prototype.clearOtherFields = function() {
 WorkorderService.prototype.searchForItem = function(workorder, count) {
   return pageObject.main.commands.search(workorder.title)
   .then(() => pageObject.main.commands.count())
-  .then((c) => utils.expect.resultIsEquelTo(c, count));
+  .then((c) => utils.expect.resultIsEqualTo(c, count));
 };
 
 /**
@@ -66,22 +66,22 @@ WorkorderService.prototype.expectDetailsToBe = function(workorder) {
   return swp.commands.getDetails()
   .then((details) => {
     var status = swp.commands.getStatus(details);
-    utils.expect.resultIsEquelTo(status.h3, workorder.status);
+    utils.expect.resultIsEqualTo(status.h3, workorder.status);
     var coordinates = swp.commands.getCoordinates(details, workorder.address);
-    utils.expect.resultIsEquelTo(coordinates.h3, workorder.latitude+', '+workorder.longitude);
+    utils.expect.resultIsEqualTo(coordinates.h3, workorder.latitude+', '+workorder.longitude);
     var title = swp.commands.getTitle(details);
-    utils.expect.resultIsEquelTo(title.h3, workorder.title);
+    utils.expect.resultIsEqualTo(title.h3, workorder.title);
     // var finishDate = swp.commands.getFinishDate(details); //  TODO check date format
-    // utils.checkResultIsEquelTo(finishDate.h3, params.finishDate);
+    // utils.checkresultIsEqualTo(finishDate.h3, params.finishDate);
     var finishTime = swp.commands.getFinishTime(details);
-    utils.expect.resultIsEquelTo(finishTime.h3.substring(0, 5), workorder.finishTime.substring(0, 5));
+    utils.expect.resultIsEqualTo(finishTime.h3.substring(0, 5), workorder.finishTime.substring(0, 5));
     var assignee = swp.commands.getAssignee(details);
-    utils.expect.resultIsEquelTo(assignee.h3, workorder.assignee);
+    utils.expect.resultIsEqualTo(assignee.h3, workorder.assignee);
     return Promise.all([
       swp.commands.getWorkSummary()
-      .then((summary) => utils.expect.resultIsEquelTo(summary, workorder.summary)),
+      .then((summary) => utils.expect.resultIsEqualTo(summary, workorder.summary)),
       swp.commands.getWorkflow()
-      .then((workflow) => utils.expect.resultIsEquelTo(workflow, 'Workflow: ' + workorder.workflow))
+      .then((workflow) => utils.expect.resultIsEqualTo(workflow, 'Workflow: ' + workorder.workflow))
     ]);
   });
 };
@@ -92,7 +92,7 @@ WorkorderService.prototype.expectElementInfo = function(workorder) {
     utils.expect.resultIsTrue(result);
     return swp.locators.workorderHeader.getText();
   })
-  .then((result) => utils.expect.resultIsEquelTo(result, 'Work order : ' + workorder.title));
+  .then((result) => utils.expect.resultIsEqualTo(result, 'Work order : ' + workorder.title));
 };
 
 WorkorderService.prototype.expectElementDetails = function(promise, expected, expectFunc) {
