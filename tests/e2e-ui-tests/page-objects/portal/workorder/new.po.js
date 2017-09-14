@@ -8,35 +8,13 @@ var NewWorkorderPage = function() {
       self: element(by.css(workorderFormSelector)),
       fields: {
         title: element(by.css(workorderFormSelector + ' #inputTitle'))
-        // address: element(by.css(workorderFormSelector + ' #inputAddress')),
-        // latitude: element(by.css(workorderFormSelector + ' input[name="lattitude"]')),
-        // longitude: element(by.css(workorderFormSelector + ' input[name="longitude"]')), // ID is wrong in UI
-        // summary: element(by.css(workorderFormSelector + ' #inputSummary')),
       },
       dropdowns: {
-        // assignee: element(by.css(workorderFormSelector + ' #assignee')),
         workflow: element(by.css(workorderFormSelector + ' #workflow'))
       },
-      // datetime: {
-      //   // startDate: element(by.css(workorderFormSelector + ' #inputStartDate')), // TODO
-      //   // startTime: element(by.css(workorderFormSelector + ' #inputStartTime')), // TODO
-      //   finishDate: element(by.css(workorderFormSelector + ' #inputFinishDate')),
-      //   finishTime: element(by.css(workorderFormSelector + ' #inputFinishTime')),
-      // },
-      // searchInputs: {
-      //   assignee: element(by.css(workorderFormSelector + ' input[type="search"]'))
-      // },
       warnings: {
         workflow: element(by.css(workorderFormSelector + ' [ng-messages="workorderForm.workflow.$error"] div')),
         title: element(by.css(workorderFormSelector + ' [ng-messages="workorderForm.title.$error"] div')),
-        // address: element(by.css(workorderFormSelector + ' [ng-messages="workorderForm.address.$error"] div')),
-        // latitude: element(by.css(workorderFormSelector + ' [ng-messages="workorderForm.lattitude.$error"] div')),
-        // longitude: element(by.css(workorderFormSelector + ' [ng-messages="workorderForm.longitude.$error"] div')),
-        // startDate: element(by.css(workorderFormSelector + ' [ng-messages="workorderForm.startDate.$error"] div')), // TODO
-        // startTime: element(by.css(workorderFormSelector + ' [ng-messages="workorderForm.startTime.$error"] div')), // TODO
-        // finishDate: element(by.css(workorderFormSelector + ' [ng-messages="workorderForm.finishDate.$error"] div')),
-        // finishTime: element(by.css(workorderFormSelector + ' [ng-messages="workorderForm.finishTime.$error"] div')),
-        // summary: element(by.css(workorderFormSelector + ' [ng-messages="workorderForm.summary.$error"] div')),
       },
       buttons: {
         create: element(by.css(workorderFormSelector + ' button[aria-label="Create Workorder"]')),

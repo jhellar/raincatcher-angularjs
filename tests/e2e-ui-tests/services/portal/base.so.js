@@ -57,11 +57,6 @@ BaseService.prototype.update = function(toUpdate, updatee) {
   return self.open(toUpdate)
   .then(() => utils.ui.clickButtonPromise(pageObject.main.locators.editButton))
   .then(() => self.clearAllFields())
-  // .then(() => {
-  //   if (pageObject.new.locators.itemForm.dropdowns) { // fill dropdowns
-  //     return utils.ui.selectPromise(pageObject.new.locators.itemForm.dropdowns, updatee);
-  //   }
-  // })
   .then(() => {
     if (pageObject.new.locators.itemForm.datetime) { // fill date and time
       return utils.ui.sendKeysPromise(pageObject.new.locators.itemForm.datetime, updatee);

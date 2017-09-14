@@ -1,3 +1,10 @@
+function setupExpect() {
+  var chai = require('chai');
+  var chaiAsPromised = require('chai-as-promised');
+  chai.use(chaiAsPromised);
+  global.expect = chai.expect;
+}
+
 exports.config = {
   allScriptsTimeout: 20000,
   mobileURL: '',
@@ -18,7 +25,6 @@ exports.config = {
     portal: 'tests/portal/*.js',
     mobile_portal: 'tests/mobile-portal/*.js'
   },
-  // specs: ['tests/portal/workorder.spec.js'],
   capabilities: {
     browserName: 'chrome',
     'chromeOptions': {
@@ -29,7 +35,6 @@ exports.config = {
         }
       },
       args: [
-        '--headless',
         'no-sandbox',
         'user-data-dir=/tmp/chrome',
         'no-default-browser-check',
@@ -47,15 +52,10 @@ exports.config = {
   },
   onPrepare: function setup() {
     return browser.driver.executeScript(function() {
-      // window.sessionStorage.clear();
-      // window.localStorage.clear();
-    // }).then(function() {
-    //   browser.driver.manage().window().setSize(1280, 1024);
-    }).then(function() { // setup expect as global
-      var chai = require('chai');
-      var chaiAsPromised = require('chai-as-promised');
-      chai.use(chaiAsPromised);
-      global.expect = chai.expect;
-    });
+      window.sessionStorage.clear();
+      window.localStorage.clear();
+    }).then(setupExpect);
   }
 };
+
+exports.setupExpect = setupExpect;

@@ -28,10 +28,6 @@ describe('Workorder E2E', function() {
 
   context('RUN TEST', function() {
     var workflow1Id, workflow2Id;
-    // before('create workers', function() {
-    //   workerService.create(data.workers.WORKER1);
-    //   workerService.create(data.workers.WORKER2);
-    // });
     before('create workflows', function() {
       browser.ignoreSynchronization = false;
       workflowService.create(data.workflows.WORKFLOW1);
@@ -64,9 +60,6 @@ describe('Workorder E2E', function() {
       step('check ' + data.params.WORKORDER_TCREATE + ' workorder in list', function() {
         workorderService.expectToBeInList(data.workorders.CREATE);
       });
-      // step('check ' + data.params.WORKORDER_TCREATE + ' workorder in ' + data.params.WORKER_TCRUDL1 + ' worker list', function() {
-      //   workerService.verifyWorkorderInList(data.workers.WORKER1, data.workorders.CREATE);
-      // });
       xstep('mobile App workorder in list', function() {
         // TODO
       });
@@ -95,9 +88,6 @@ describe('Workorder E2E', function() {
       step('check ' + data.params.WORKORDER_TUPDATE1 + ' workorder not in list', function() {
         workorderService.expectNotInTheList(data.workorders.UPDATE1);
       });
-      // step('check ' + data.params.WORKORDER_TUPDATE2 + ' workorder in ' + data.params.WORKER_TCRUDL2 + ' worker list', function() {
-      //   workerService.verifyWorkorderInList(data.workers.WORKER2, data.workorders.UPDATE2);
-      // });
       xstep('mobile App workorder in list', function() {
         // TODO
       });
@@ -181,17 +171,10 @@ describe('Workorder E2E', function() {
       step('check ' + data.params.WORKORDER_TDELETE + ' workorder not in list', function() {
         workorderService.expectNotInTheList(data.workorders.DELETE);
       });
-      // step('check ' + data.params.WORKORDER_TDELETE + ' workorder not in ' + data.params.WORKER_TCRUDL1 + ' worker list', function() {
-      //   workerService.verifyWorkorderNotInList(data.workers.WORKER1, data.workorders.DELETE);
-      // });
       xstep('mobile App workorder in list', function() {
         // TODO
       });
     });
-    // after('remove workers', function() {
-    //   workerService.remove(data.workers.WORKER1);
-    //   workerService.remove(data.workers.WORKER2);
-    // });
     after('remove workflows', function() {
       workflowService.remove(data.workflows.WORKFLOW1);
       workflowService.remove(data.workflows.WORKFLOW2);
