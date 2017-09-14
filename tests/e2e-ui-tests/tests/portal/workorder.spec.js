@@ -1,9 +1,6 @@
 var WorkorderService = require('../../services/portal/workorder.so');
 var workorderService = new WorkorderService();
 
-// var WorkerService = require('../../services/portal/worker.so');
-// var workerService = new WorkerService();
-
 var WorkflowService = require('../../services/portal/workflow.so');
 var workflowService = new WorkflowService();
 
@@ -27,18 +24,13 @@ describe('Workorder E2E', function() {
   });
 
   context('RUN TEST', function() {
-    var workflow1Id, workflow2Id;
     before('create workflows', function() {
       browser.ignoreSynchronization = false;
       workflowService.create(data.workflows.WORKFLOW1);
       browser.refresh(); // workaround for https://issues.jboss.org/browse/RAINCATCH-1225
-      workflowService.getWorkflowId(data.workflows.WORKFLOW1)
-        .then((wid) => workflow1Id = wid);
 
       workflowService.create(data.workflows.WORKFLOW2);
       browser.refresh(); // workaround for https://issues.jboss.org/browse/RAINCATCH-1225
-      workflowService.getWorkflowId(data.workflows.WORKFLOW2)
-        .then((wid) => workflow2Id = wid);
     });
     context('CREATE', function() {
       step('create an empty{} workorder', function() {
