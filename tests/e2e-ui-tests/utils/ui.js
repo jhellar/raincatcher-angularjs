@@ -98,7 +98,7 @@ module.exports.selectPromise = function(elements, params) {
   var select = function(kvPair) {
     var el = kvPair.element;
     return el.click()
-      .then(() => browser.sleep(2000))
+      .then(() => browser.sleep(3000))
       .then(() => element(by.cssContainingText('.md-select-menu-container.md-active md-option .md-text', kvPair.value)).click());
   };
   var kvPairs = _.map(elements, function(element, key) {
