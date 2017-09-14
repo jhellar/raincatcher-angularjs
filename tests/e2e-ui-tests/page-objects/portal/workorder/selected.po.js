@@ -2,10 +2,10 @@ var utils = require('../../../utils');
 
 var SelectedWorkorderPage = function() {
   var locators = {
-    workorderHeader: element(by.css('div.ng-scope.flex>md-toolbar>div>h3')),
+    workorderHeader: element(by.css('#content > div.ng-scope.flex > workorder-summary > md-toolbar > div > h3')),
     workorderDetails: element(by.css('workorder>md-list')).all(by.css('md-list-item')),
     workSummary: element(by.css('workorder>p')),
-    workflow: element(by.css('md-card>md-card-title>md-card-title-text>span'))
+    workflow: element(by.css('md-card>md-card-title>md-card-title-text'))
   };
 
   var commands = {
@@ -57,7 +57,7 @@ var SelectedWorkorderPage = function() {
     },
     getTitle: function(details) {
       var title = details.find(function(elem) {
-        return elem.p === "Workorder";
+        return elem.p === "Workorder title";
       });
       return title;
     },

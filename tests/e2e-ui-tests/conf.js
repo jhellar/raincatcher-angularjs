@@ -13,12 +13,12 @@ exports.config = {
     require: require('mocha-steps')
   },
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  // suites: {
-  //   mobile: 'tests/mobile/*.js',
-  //   portal: 'tests/portal/*.js',
-  //   mobile_portal: 'tests/mobile-portal/*.js'
-  // },
-  specs: ['tests/portal/workflow.spec.js'],
+  suites: {
+    mobile: 'tests/mobile/*.js',
+    portal: 'tests/portal/*.js',
+    mobile_portal: 'tests/mobile-portal/*.js'
+  },
+  // specs: ['tests/portal/workorder.spec.js'],
   capabilities: {
     browserName: 'chrome',
     'chromeOptions': {
@@ -29,6 +29,7 @@ exports.config = {
         }
       },
       args: [
+        '--headless',
         'no-sandbox',
         'user-data-dir=/tmp/chrome',
         'no-default-browser-check',
@@ -37,7 +38,8 @@ exports.config = {
         'disable-application-cache',
         'disable-offline-load-stale-cache',
         'disk-cache-size=0',
-        'v8-cache-options=off'
+        'v8-cache-options=off',
+        '--window-size=1280,1024'
       ]
     },
     defaultPageLoadTimeout: 10000,
@@ -45,15 +47,10 @@ exports.config = {
   },
   onPrepare: function setup() {
     return browser.driver.executeScript(function() {
-      window.sessionStorage.clear();
-      window.localStorage.clear();
-      return {
-        width: window.screen.availWidth,
-        height: window.screen.availHeight,
-      };
-    // }).then(function(result) {
-    //   console.log('Browser Max Window Size', result);
-    //   browser.driver.manage().window().setSize(result.width, result.height);
+      // window.sessionStorage.clear();
+      // window.localStorage.clear();
+    // }).then(function() {
+    //   browser.driver.manage().window().setSize(1280, 1024);
     }).then(function() { // setup expect as global
       var chai = require('chai');
       var chaiAsPromised = require('chai-as-promised');

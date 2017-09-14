@@ -7,7 +7,7 @@ var SelectedWorkflowPage = function() {
 
     workflowHeader: element(by.css('#content > div.ng-scope.flex > workflow-detail > md-toolbar > div > h3')),
     workflowSteps: element.all(by.repeater('step in ctrl.workflow.steps')), // get all steps but not [Add Step]
-    workflowEditLink: element(by.css('#content > div.ng-scope.flex > md-toolbar > div > a')),
+    workflowEditLink: element(by.css('#content > div.ng-scope.flex > workflow-detail > md-toolbar > div > a')),
 
     stepForm: {
       self: element(by.css(stepFormSelector)),

@@ -24,7 +24,7 @@ BaseService.prototype.create = function(item, dummyParams) {
   .then(() => self.expectFieldsPresent())
   .then( ()  => { // fill dropdown selectors
     if (!dummyParams && pageObject.new.locators.itemForm.dropdowns) {
-      return utils.ui.sendKeysPromise(pageObject.new.locators.itemForm.dropdowns, item);
+      return utils.ui.selectPromise(pageObject.new.locators.itemForm.dropdowns, item);
     }
   })
   .then(() => { // fill date and time fields
@@ -57,11 +57,11 @@ BaseService.prototype.update = function(toUpdate, updatee) {
   return self.open(toUpdate)
   .then(() => utils.ui.clickButtonPromise(pageObject.main.locators.editButton))
   .then(() => self.clearAllFields())
-  .then(() => {
-    if (pageObject.new.locators.itemForm.dropdowns) { // fill dropdowns
-      return utils.ui.sendKeysPromise(pageObject.new.locators.itemForm.dropdowns, updatee);
-    }
-  })
+  // .then(() => {
+  //   if (pageObject.new.locators.itemForm.dropdowns) { // fill dropdowns
+  //     return utils.ui.selectPromise(pageObject.new.locators.itemForm.dropdowns, updatee);
+  //   }
+  // })
   .then(() => {
     if (pageObject.new.locators.itemForm.datetime) { // fill date and time
       return utils.ui.sendKeysPromise(pageObject.new.locators.itemForm.datetime, updatee);

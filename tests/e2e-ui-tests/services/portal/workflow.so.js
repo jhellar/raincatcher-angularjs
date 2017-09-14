@@ -46,6 +46,7 @@ WorkflowService.prototype.getWorkflowId = function(workflow) {
     }, timeout);
   };
   return this.open(workflow)
+  .then(() => new Promise(resolve => setTimeout(resolve, 3000))) // TODO better handle this wait
   .then(function() {
     utils.wait.until(swp.locators.workflowEditLink, 5000, condition);
   })
@@ -151,7 +152,7 @@ WorkflowService.prototype.expectStepWarningsPresent = function() {
     utils.expect.resultIsTrue(result);
     return utils.promise.all(swp.locators.stepForm.warnings, x => x.isPresent());
   })
-  .then((results) => utils.expect.eachResultsIsTrue(results));
+  .then((results) => utils.expect.eachResultToBeTrue(results));
 };
 
 WorkflowService.prototype.expectStepDetailsToBe = function(workflow, expected) {

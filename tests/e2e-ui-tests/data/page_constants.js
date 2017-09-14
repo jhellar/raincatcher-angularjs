@@ -8,7 +8,7 @@ module.exports = {
     DEFAULT_HEADING: 'FeedHenry Workforce Management',
     USERNAME_LABEL_MSG: 'Username or email',
     PASSWORD_LABEL_MSG: "Password",
-    AUTH_FAIL_MSG: 'Invalid credentials',
+    AUTH_FAIL_MSG: 'Invalid Credentials',
   },
   logout: {
     URL: '/login',
@@ -29,7 +29,7 @@ module.exports = {
     },
     portal: {
       URL_NEW: '/workorders/list/new',
-      DEFAULT_HEADING: "Workorders",
+      DEFAULT_HEADING: "No workorder selected.",
       DEFAULT_BODY: "Select a workorder from the menu, or create a new workorder:",
       WORKFLOW_MISSING_MSG: 'A workflow is required.',
       TITLE_MISSING_MSG: 'A title is required.',
